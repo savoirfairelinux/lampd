@@ -24,7 +24,7 @@ RUN drush dl site_audit -y
 # Make mysql listen on the outside
 RUN sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
 
-COPY apache2-foreground /usr/local/bin/
+COPY start-servers /usr/local/bin/
 WORKDIR /var/www/html
 EXPOSE 80
-CMD ["apache2-foreground"]
+CMD ["start-servers"]
