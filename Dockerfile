@@ -9,10 +9,10 @@ MAINTAINER Ernesto Rodriguez Ortiz <ernesto.rodriguezortiz@savoirfairelinux.com>
 RUN apt-get update
 
 RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -sf /bin/true /sbin/initctl  
+RUN ln -sf /bin/true /sbin/initctl
 
 # Install Apache, MySQL, PHP, and others..
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install curl wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear postfix php5-imagick php5-dev build-essential
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim curl wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear postfix php5-imagick php5-dev build-essential
 RUN DEBIAN_FRONTEND=noninteractive apt-get autoclean
 
 # Install drush, phpmd, phpcpd, site_audit, uploadprogress
