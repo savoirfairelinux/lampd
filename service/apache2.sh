@@ -1,7 +1,5 @@
 #!/bin/bash
 set -e
-# Start nysql server
-/usr/bin/mysqld_safe &
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
 source /etc/apache2/envvars
