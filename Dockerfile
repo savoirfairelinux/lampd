@@ -20,7 +20,7 @@ CMD ["/sbin/my_init"]
 RUN apt-get update
 
 # Install Apache, MySQL, PHP, and others..
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim curl wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear postfix php5-imagick php5-dev build-essential
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim curl wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear php5-imagick php5-dev build-essential
 
 # Install drush, phpmd, phpcpd, site_audit, uploadprogress
 RUN pear channel-discover pear.drush.org && pear install drush/drush 
