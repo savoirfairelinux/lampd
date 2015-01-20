@@ -1,10 +1,12 @@
 docker-drupal
 =============
 
-This repo contains a recipe for making a [Docker](http://docker.io) container for Drupal, using Linux, Apache and MySQL. 
+This repo contains a recipe for making a [Docker](http://docker.io) image for Drupal, using Linux, Apache and MySQL. 
 To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/).
 
 This will try to go in line with [Drupal automated-testing](https://drupal.org/automated-testing).
+
+This image is used in other projects like [Drupal sfl-boilerplate](https://gitlab.savoirfairelinux.com/drupal/sfl-boilerplate) and the purpouse is to provide to others Drupal projects a baseimage with all dependency installed to make tests and install Drupal.
 
 ## Install docker:
 First, check that your APT system can deal with https URLs: the file /usr/lib/apt/methods/https should exist. If it doesn't, you need to install the package apt-transport-https.
