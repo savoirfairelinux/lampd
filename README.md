@@ -1,7 +1,7 @@
-docker-drupal
-=============
+Bocker-BaseImage
+================
 
-This repo contains a recipe for making a [Docker](http://docker.io) image for Drupal, using Linux, Apache and MySQL. 
+This repo contains a recipe for making a [Docker](http://docker.io) baseimage using Linux, Apache, MySQL, git, drush, and more. 
 To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/).
 
 This will try to go in line with [Drupal automated-testing](https://drupal.org/automated-testing).
