@@ -22,14 +22,15 @@ RUN apt-get update
 # Install Apache, MySQL, PHP, and others..
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim curl wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear php5-imagick php5-dev build-essential
 
-# Install drush, phpmd, phpcpd, site_audit, uploadprogress
+# Install drush, phpmd, phpcpd, site_audit, uploadprogress, behat, drupal_extension
 RUN pear channel-discover pear.drush.org && pear install drush/drush 
 RUN pear channel-discover pear.phpmd.org && pear channel-discover 'pear.pdepend.org' && pear install --alldeps 'phpmd/PHP_PMD'
 RUN wget http://pear.phpunit.de/get/phpcpd.phar && chmod +x phpcpd.phar && mv phpcpd.phar /usr/local/bin/phpcpd
 RUN drush dl site_audit -y
-RUN pecl install -Z uploadprogress
-RUN echo "extension=uploadprogress.so" >> /etc/php5/apache2/conf.d/uploadprogress.ini
-RUN ln -s /etc/php5/mods-available/uploadprogress.ini /etc/php5/apache2/conf.d/20-uploadprogress.ini
+RUN pecl install -Z uploadprogress && echo "extension=uploadprogress.so" >> /etc/php5/apache2/conf.d/uploadprogress.ini && ln -s /etc/php5/mods-available/uploadprogress.ini /etc/php5/apache2/conf.d/20-uploadprogress.ini
+RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && mkdir /opt/drupalextension/
+COPY composer.json /opt/drupalextension/composer.json
+RUN cd /opt/drupalextension/ && composer install && bin/behat --help && ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
 
 # Make mysql listen on the outside
 RUN sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
