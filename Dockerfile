@@ -30,7 +30,7 @@ RUN drush dl site_audit -y
 RUN pecl install -Z uploadprogress && echo "extension=uploadprogress.so" >> /etc/php5/apache2/conf.d/uploadprogress.ini && ln -s /etc/php5/mods-available/uploadprogress.ini /etc/php5/apache2/conf.d/20-uploadprogress.ini
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && mkdir /opt/drupalextension/
 COPY composer.json /opt/drupalextension/composer.json
-RUN cd /opt/drupalextension/ && composer install && bin/behat --help && ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
+RUN cd /opt/drupalextension/ && composer install && ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
 
 # Make mysql listen on the outside
 RUN sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
