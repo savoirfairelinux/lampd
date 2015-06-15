@@ -40,12 +40,12 @@ Remember logout and login to the last command take effect.
 
 ## Clone this repo somewhere, 
 ```
-git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
-cd docker-lampd
+$ git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
+$ cd docker-lampd
 ```
 and then build it:
 ```
-sudo docker build -t sflinux/baseimage .
+$ docker build -t sflinux/baseimage .
 ```
 
 this can take a while but should eventually return a command prompt. It's done when it says "Successfully built {hash}"
@@ -56,7 +56,7 @@ Now you have your base image that can be used in all your Drupal projects instea
 You can verifid this runing
 
 ```
-# sudo docker images
+$ docker images
 REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 sflinux/baseimage       latest              a57eacb74c44        4 days ago          723.7 MB
 ```
