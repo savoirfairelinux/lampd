@@ -7,34 +7,40 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 This image is used in other projects like [Drupal sfl-boilerplate](https://gitlab.savoirfairelinux.com/drupal/sfl-boilerplate) and the purpouse is to provide to others Drupal projects a baseimage with all dependency installed to make tests and install Drupal.
 
 ## Install docker:
-First, check that your APT system can deal with https URLs: the file /usr/lib/apt/methods/https should exist. If it doesn't, you need to install the package apt-transport-https.
-```
-[ -e /usr/lib/apt/methods/https ] || {
-  apt-get update
-  apt-get install apt-transport-https
-}
-```
 
-Then, add the Docker repository key to your local keychain.
+Log into your Ubuntu installation as a user with sudo privileges.
+
+Verify that you have wget installed.
 ```
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+$ which wget
 ```
-Add the Docker repository to your apt sources list, update and install the lxc-docker package.
+If wget isn't installed, install it after updating your manager:
 ```
-sudo sh -c "echo deb https://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-sudo apt-get update
-sudo apt-get install lxc-docker
+$ sudo apt-get update $ sudo apt-get install wget
 ```
+Get the latest Docker package.
+```
+$ wget -qO- https://get.docker.com/ | sh
+```
+The system prompts you for your sudo password. Then, it downloads and installs Docker and its dependencies.
+
+Verify docker is installed correctly.
+```
+$ sudo docker version
+```
+This command should show you the version of docker installed in your system
 
 Add your user to the docker group to be able to execute docker command wihtout sudo
+```
+$ adduser <user> docker
+```
+Remember logout and login to the last command take effect.
 
-```
-adduser <user> docker
-```
+#### To install docker in other OS look [here](https://docs.docker.com/installation)
 
 ## Clone this repo somewhere, 
 ```
-git clone https://gitlab.savoirfairelinux.com/erortiz/docker-lampd.git
+git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
 cd docker-lampd
 ```
 and then build it:
@@ -70,8 +76,7 @@ Feel free to fork and contribute to this code. :)
 
 ## Authors
 
-Created and maintained by [Ernesto Rodriguez Ortiz][author] (ernesto.rodriguezortiz@savoirfairelinux.com>)
+Created and maintained by [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com>)
 
 ## License
 GPL v2
-
