@@ -1,82 +1,79 @@
-Bocker-BaseImage
-================
+SFLinux-BaseImage
+=================
 
-This repo contains a recipe for making a [Docker](http://docker.io) baseimage using Linux, Apache, MySQL, git, drush, and more. 
-To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/).
+Ce dépot av vous permettre de créer une image [Docker](http://docker.io) de base, contenant Linux, Apache, MySQL, git, drush et d'autres choses utiles pour faire tourner un site Drupal.
+Pour l'utiliser, vous devez avoir [installé Docker](http://www.docker.io/gettingstarted/).
 
-This image is used in other projects like [Drupal sfl-boilerplate](https://gitlab.savoirfairelinux.com/drupal/sfl-boilerplate) and the purpouse is to provide to others Drupal projects a baseimage with all dependency installed to make tests and install Drupal.
+Cette image est utilisé pour plusieurs projets Drupal comme [SFL Boilerplate](https://gitlab.savoirfairelinux.com/drupal/sfl-boilerplate) ou [My Dauphine](https://gitlab.savoirfairelinux.com/paris-dauphine/dauphine-espace-etudiant). Le but est de fournir une image de base que l'on pourra utiliser pour chancun de nos projets Drupal.
 
-## Install docker:
+Installation de Docker
+----------------------
 
-Log into your Ubuntu installation as a user with sudo privileges.
+La [procédure d'installation](https://docs.docker.com/installation) est décrite sur le site officiel
 
-Verify that you have wget installed.
-```
-$ which wget
-```
-If wget isn't installed, install it after updating your manager:
-```
-$ sudo apt-get update $ sudo apt-get install wget
-```
-Get the latest Docker package.
-```
-$ wget -qO- https://get.docker.com/ | sh
-```
-The system prompts you for your sudo password. Then, it downloads and installs Docker and its dependencies.
+Pensez aussi à mettre docker en mode sudo :
 
-Verify docker is installed correctly.
-```
-$ sudo docker version
-```
-This command should show you the version of docker installed in your system
+    # Add the docker group if it doesn't already exist.
+    $ sudo groupadd docker
 
-Add your user to the docker group to be able to execute docker command wihtout sudo
-```
-$ adduser <user> docker
-```
-Remember logout and login to the last command take effect.
+    # Add the connected user "${USER}" to the docker group.
+    # Change the user name to match your preferred user.
+    # You may have to logout and log back in again for
+    # this to take effect.
+    $ sudo gpasswd -a ${USER} docker
 
-#### To install docker in other OS look [here](https://docs.docker.com/installation)
+    # Restart the Docker daemon.
+    # If you are in Ubuntu 14.04, use docker.io instead of docker
+    $ sudo service docker restart
 
-## Clone this repo somewhere, 
-```
-$ git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
-$ cd docker-lampd
-```
-and then build it:
-```
-$ docker build -t sflinux/baseimage .
-```
+Puis à vous déconnecter/reconnecter pour activer le tout.
 
-this can take a while but should eventually return a command prompt. It's done when it says "Successfully built {hash}"
+Installation de l'image de base
+-------------------------------
 
-That's it!
-Now you have your base image that can be used in all your Drupal projects instead of use ubuntu:lastes or ubuntu:14.04
+Clonez de dépot quelquepart sur votre poste de travail et descendez dedans :
 
-You can verifid this runing
+    $ git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
+    $ cd docker-lampd
 
-```
-$ docker images
-REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-sflinux/baseimage       latest              a57eacb74c44        4 days ago          723.7 MB
-```
+Ceci fait, lancez la création de l'image
 
-### More information about this project
+    $ docker build -t sflinux/baseimage .
 
-This project use phusion/baseimage like base image to build and image with all the software neede to install Drupal projects and make tests
+Ça peut être une opération relativement longue. Une fois terminé, vous devez voir le message : "Successfully built {hash}"
 
-To read about why use phusion/baseimage and not ubuntu:14.04 look at [Phusion Baseimage](https://registry.hub.docker.com/u/phusion/baseimage/).
+Vous disposez maintenant de l'image de base que l'on utilisera pour tous les projets Drupal.
 
-You generally not will need to run this image, it will be used generally to build other images
+Vous pouvez vérfier qu'elle existe en faisant :
 
 
-## Contributing
-Feel free to fork and contribute to this code. :)
+    $ docker images
+    REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    sflinux/baseimage       latest              a57eacb74c44        4 days ago          723.7 MB
+
+Plus d'infos à propos de ce projet
+----------------------------------
+
+Ce projet utilise lui même une image de base phusion/baseimage pour se construire correctement, avec l'ensemble des paquets nécessaires au développement d'un site Drupal.
+
+Pour en savoir plus à propos de phusion/baseimage, et notamment pourquoi on a choisi cette image plutôt que ubuntu:14.04, jetez un coup d'oeil ici : [Phusion Baseimage](https://registry.hub.docker.com/u/phusion/baseimage/).
+
+Lancer un conteneur à partir de cette image est inutile, c'est une image qui servira de base pour les images projet.
 
 
-## Authors
+Contribution
+------------
 
-Created and maintained by [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com>)
+N'hésitez pas, toute amélioration est bonne à prendre. :)
 
-## License
+
+Auteurs
+-------
+
+Créé et maintenu par [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com)
+Documentation par [Philippe MOUCHEL](philippe.mouchel@savoirfairelinux.com)
+
+Licence
+-------
+
 GPL v2
