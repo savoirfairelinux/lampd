@@ -47,7 +47,7 @@ Clonez de dépot quelquepart sur votre poste de travail et descendez dedans :
 
 Ceci fait, lancez la création de l'image :
 
-    $ docker build -t sflinux/baseimage .
+    $ docker build -t savoirfairelinux/lampd .
 
 Ça peut être une opération relativement longue. Une fois terminé, vous devez voir le message : "Successfully built {hash}"
 
