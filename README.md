@@ -9,9 +9,9 @@ Si vous avez déjà travaillé sur un site Drupal avec Docker, il y a des chance
 
     $ docker images
     REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    sflinux/baseimage       latest              a57eacb74c44        4 days ago          723.7 MB
+    savoirfairelinux/lampd  latest              a57eacb74c44        4 days ago          723.7 MB
 
-Si vous voyez l'image sflinux/baseimage, vous pouvez installer l'image du projet sans problème. Sinon, poursuivez cette procédure
+Si vous voyez l'image savoirfairelinux/lampd, vous pouvez installer l'image du projet sans problème. Sinon, poursuivez cette procédure
 
 Installation de Docker
 ----------------------
