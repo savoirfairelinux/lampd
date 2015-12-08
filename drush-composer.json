@@ -1,0 +1,8 @@
+{
+  "require": {
+    "drush/drush": "~7.0"
+},
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
