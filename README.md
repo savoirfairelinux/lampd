@@ -18,7 +18,7 @@ Installation de Docker
 
 Cette étape est inutile si vous avez déjà installé Docker.
 
-La [procédure d'installation](https://docs.docker.com/installation) est décrite sur le site officiel.
+La [procédure d'installation](https://docs.docker.com/engine/installation/) est décrite sur le site officiel.
 
 Pensez aussi à mettre docker en mode sudo :
 
