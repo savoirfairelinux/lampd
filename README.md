@@ -1,87 +1,69 @@
-SFLinux-BaseImage
-=================
+A Drupal-oriented LAMP stack base image for Docker
+==================================================
 
-Ce dépot va vous permettre de créer une image [Docker](http://docker.io) de base, contenant Linux, Apache, MySQL, git, drush et d'autres paquets utiles pour développer et faire tourner un site Drupal. Pour l'utiliser, vous devez avoir [installé Docker](http://www.docker.io/gettingstarted/).
+Lampd is a Docker base image, based itself on modified Ubuntu base image *Phusion*.
 
-Cette image est utilisé pour plusieurs projets Drupal comme [SFL Boilerplate](https://gitlab.savoirfairelinux.com/drupal/sfl-boilerplate) ou [My Dauphine](https://gitlab.savoirfairelinux.com/paris-dauphine/dauphine-espace-etudiant). Le but est de fournir une image de base que l'on pourra utiliser pour chacun de nos projets Drupal.
+Learn more at Docker Hub on [Phusion Base Image](https://hub.docker.com/r/phusion/baseimage/).
 
-Si vous avez déjà travaillé sur un site Drupal avec Docker, il y a des chances que vous ayez déjà installé cette image. Vous pouvez le constater en éxecutant la commande :
+Lampd is available for pulling from the [Docker registry](https://hub.docker.com/r/savoirfairelinux/lampd/). 
 
-    $ docker images
-    REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    savoirfairelinux/lampd  latest              a57eacb74c44        4 days ago          723.7 MB
+Contents
+--------
 
-Si vous voyez l'image savoirfairelinux/lampd, vous pouvez installer l'image du projet sans problème. Sinon, poursuivez cette procédure
+On top of all [the components](https://github.com/phusion/baseimage-docker#whats-inside-the-image) provided by the Phusion base image, Lampd base image contains essential components for Drupal development:
 
-Installation de Docker
-----------------------
+* Ubuntu 14.04 LTS as base system
+* Apache2
+* MySQL
+* PHP 5.5.9
+* Git
+* Composer
+* Drush 7.x
+* Behat 3.0 with [Drupal Extension](https://www.drupal.org/project/drupalextension)
+* A [JUnit formatter](https://packagist.org/packages/jarnaiz/behat-junit-formatter) for Behat 3.0
 
-Cette étape est inutile si vous avez déjà installé Docker.
+Use Lampd as base image
+-----------------------
 
-La [procédure d'installation](https://docs.docker.com/engine/installation/) est décrite sur le site officiel.
+The image is called _savoirfairelinux/lampd_, and is available on the Docker registry.
 
-Pensez aussi à mettre docker en mode sudo :
+```
+# Docker Drupal
+# VERSION       0.3
+FROM    savoirfairelinux/lampd
+```
 
-    # Add the docker group if it doesn't already exist.
-    $ sudo groupadd docker
+Usage
+-----
 
-    # Add the connected user "${USER}" to the docker group.
-    # Change the user name to match your preferred user.
-    # You may have to logout and log back in again for
-    # this to take effect.
-    $ sudo gpasswd -a ${USER} docker
+Start a container:
+```
+docker run YOUR_IMAGE
+```
 
-    # Restart the Docker daemon.
-    # If you are in Ubuntu 14.04, use docker.io instead of docker
-    $ sudo service docker restart
+Find out the container ID that you just ran:
+```
+docker ps
+```
 
-Puis à vous déconnecter/reconnecter pour finaliser l'isntallation et la configuration
+Once you have the ID, look for its IP address with:
+```
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" <ID>
+```
 
-Installation de l'image de base
--------------------------------
+Now that you have the IP address, you can use SSH to login to the container, or to execute a command inside it:
+```
+# Login to the container
+ssh -i /path-to/your_key root@<IP address>
 
-Clonez de dépot quelquepart sur votre poste de travail et descendez dedans :
+# Running a command inside the container
+ssh -i /path-to/your_key root@<IP address> echo hello world
+```
 
-    $ git clone https://gitlab.savoirfairelinux.com/drupal/docker-lampd.git
-    $ cd docker-lampd
-
-Ceci fait, lancez la création de l'image :
-
-    $ docker build -t savoirfairelinux/lampd .
-
-Ça peut être une opération relativement longue. Une fois terminé, vous devez voir le message : "Successfully built {hash}"
-
-Vous disposez maintenant de l'image de base que l'on utilisera pour tous les projets Drupal.
-
-Vous pouvez vérfier qu'elle existe en faisant :
-
-
-    $ docker images
-    REPOSITORY              TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-    sflinux/baseimage       latest              a57eacb74c44        4 days ago          723.7 MB
-
-Plus d'infos à propos de ce projet
-----------------------------------
-
-Ce projet utilise lui même une image de base phusion/baseimage pour se construire correctement, avec l'ensemble des paquets nécessaires au développement d'un site Drupal.
-
-Pour en savoir plus à propos de phusion/baseimage, et notamment pourquoi on a choisi cette image plutôt que ubuntu/14.04, jetez un coup d'oeil ici : [Phusion Baseimage](https://registry.hub.docker.com/u/phusion/baseimage/).
-
-Lancer un conteneur à partir de cette image est inutile, c'est une image qui servira de base pour les images projet.
-
-
-Contribution
-------------
-
-N'hésitez pas, toute amélioration est bonne à prendre. :)
-
-
-Auteurs
+Authors
 -------
 
-Créé et maintenu par [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com).
-
-Documentation par [Philippe MOUCHEL](philippe.mouchel@savoirfairelinux.com).
+Created and maintained by [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com) and Savoir-faire Linux Drupal Team.
 
 Licence
 -------
