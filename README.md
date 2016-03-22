@@ -21,6 +21,7 @@ On top of all [the components](https://github.com/phusion/baseimage-docker#whats
 * Drush 7.x
 * Behat 3.0 with [Drupal Extension](https://www.drupal.org/project/drupalextension)
 * A [JUnit formatter](https://packagist.org/packages/jarnaiz/behat-junit-formatter) for Behat 3.0
+* Asciidoctor
 
 Use Lampd as base image
 -----------------------
