@@ -2,7 +2,7 @@
 #
 # VERSION       0.2
 # DOCKER-VERSION        0.4
-FROM    phusion/baseimage
+FROM    phusion/baseimage:0.9.18
 MAINTAINER Ernesto Rodriguez Ortiz <ernesto.rodriguezortiz@savoirfairelinux.com>
 
 # Set correct environment variables.
