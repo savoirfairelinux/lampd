@@ -31,7 +31,7 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 COPY drupal-extension-composer.json /opt/drupalextension/composer.json
 RUN cd /opt/drupalextension/ && composer install && ln -s /opt/drupalextension/bin/behat /usr/local/bin/behat
 COPY drush-composer.json /opt/drush/composer.json
-RUN cd /opt/drush && composer install && ln -s /opt/drush/bin/drush /usr/local/bin/drush && drush dl site_audit registry_rebuild -y
+RUN cd /opt/drush && composer install && ln -s /opt/drush/bin/drush /usr/local/bin/drush && drush dl site_audit registry_rebuild-7.x -y
 RUN cd /root/.drush && git clone https://github.com/sfl-drupal/po-import.git && /opt/drush/bin/drush cc drush
 
 # Make mysql listen on the outside
