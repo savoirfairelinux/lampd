@@ -18,7 +18,7 @@ On top of all [the components](https://github.com/phusion/baseimage-docker#whats
 * PHP 5.5.9
 * Git
 * Composer
-* Drush 7.x
+* Drush 8.x
 * Behat 3.0 with [Drupal Extension](https://www.drupal.org/project/drupalextension)
 * A [JUnit formatter](https://packagist.org/packages/jarnaiz/behat-junit-formatter) for Behat 3.0
 * Asciidoctor
