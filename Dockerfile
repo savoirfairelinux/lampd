@@ -21,7 +21,7 @@ CMD ["/sbin/my_init"]
 RUN apt-get update
 
 # Install Apache, MySQL, PHP, and others..
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear php5-imagick php5-dev build-essential asciidoctor sendmail fabric
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools php5-sqlite php5-mysql php-apc php5-gd php5-curl php5-memcache memcached mc php-pear php5-imagick php5-dev build-essential asciidoctor sendmail fabric
 
 # Install drush, phpmd, phpcpd, site_audit, uploadprogress, behat, drupal_extension
 RUN pear channel-discover pear.phpmd.org && pear channel-discover 'pear.pdepend.org' && pear install --alldeps 'phpmd/PHP_PMD'
