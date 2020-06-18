@@ -5,17 +5,17 @@ Lampd is a Docker base image, based itself on modified Ubuntu base image *Phusio
 
 Learn more at Docker Hub on [Phusion Base Image](https://hub.docker.com/r/phusion/baseimage/).
 
-Lampd is available for pulling from the [Docker registry](https://hub.docker.com/r/savoirfairelinux/lampd/). 
+Lampd is available for pulling from the [Docker registry](https://hub.docker.com/r/savoirfairelinux/lampd/).
 
 Contents
 --------
 
 On top of all [the components](https://github.com/phusion/baseimage-docker#whats-inside-the-image) provided by the Phusion base image, Lampd base image contains essential components for Drupal development:
 
-* Ubuntu 14.04 LTS as base system
+* Ubuntu 16.04 LTS as base system
 * Apache2
 * MySQL
-* PHP 7.2 
+* PHP 7.2
 * Git
 * Composer
 * Drush 8.x
@@ -64,7 +64,8 @@ ssh -i /path-to/your_key root@<IP address> echo hello world
 Authors
 -------
 
-Created and maintained by [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com) and Savoir-faire Linux Drupal Team.
+Created by [Ernesto Rodriguez Ortiz](ernesto.rodriguezortiz@savoirfairelinux.com) and Savoir-faire Linux Drupal Team.
+Maintained by [Mohammed Raza] (mohammed.raza@savoirfairelinux.com)
 
 Licence
 -------
