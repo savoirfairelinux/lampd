@@ -15,7 +15,7 @@ On top of all [the components](https://github.com/phusion/baseimage-docker#whats
 * Ubuntu 14.04 LTS as base system
 * Apache2
 * MySQL
-* PHP 5.5.9
+* PHP 7.2 
 * Git
 * Composer
 * Drush 8.x
