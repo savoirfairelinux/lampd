@@ -1,9 +1,6 @@
 # docker Drupal
-#
-# VERSION       0.2
-# DOCKER-VERSION        0.4
-FROM    phusion/baseimage:0.9.18
-MAINTAINER Ernesto Rodriguez Ortiz <ernesto.rodriguezortiz@savoirfairelinux.com>
+FROM    phusion/baseimage:18.04-1.0.0
+MAINTAINER Mohammed Raza <mohammed.raza@savoirfairelinux.com>
 
 # Set correct environment variables.
 ENV HOME /root
@@ -21,7 +18,11 @@ CMD ["/sbin/my_init"]
 RUN apt-get update
 
 # Install Apache, MySQL, PHP, and others..
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget git mysql-client mysql-server apache2 libapache2-mod-php72 pwgen python-setuptools php72-sqlite php72-mysql php-apc php72-gd php72-curl php72-memcache memcached mc php-pear php72-imagick php72-dev build-essential asciidoctor sendmail fabric npm nodejs-legacy
+RUN apt install apt-transport-https lsb-release ca-certificates
+RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install wget git mysql-client mysql-server apache2 libapache2-mod-php7.2 pwgen python-setuptools php7.2-sqlite php7.2-mysql php-apc php7.2-gd php7.2-curl php7.2-memcache memcached mc php-pear php7.2-imagick php7.2-dev build-essential asciidoctor sendmail fabric npm nodejs-legacy
 
 # Install drush, phpmd, phpcpd, site_audit, uploadprogress, behat, drupal_extension
 RUN pear channel-discover pear.phpmd.org && pear channel-discover 'pear.pdepend.org' && pear install --alldeps 'phpmd/PHP_PMD'
